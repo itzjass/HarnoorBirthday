@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown to Harnoor's Birthday</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      padding: 50px;
+      background: #f9f9f9;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #ff9a9e;
+    }
+
+    #countdown {
+      font-size: 2rem;
+      color: #555;
+      margin-top: 2rem;
+    }
+
+    .message {
+      font-size: 1.5rem;
+      margin-top: 20px;
+      color: #ff9a9e;
+    }
+  </style>
+</head>
+<body>
+  <h1>Countdown to Harnoor's Birthday 🎉</h1>
+  <div id="countdown">Loading countdown...</div>
+  <div class="message">We’re almost there! Stay tuned for a surprise! 🎁</div>
+
+  <script>
+    // Set the date for Harnoor's birthday in IST (Indian Standard Time)
+    const birthdayDate = new Date('November 27, 2024 00:00:00 GMT+0530');  // IST is GMT+5:30
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = birthdayDate - now;
+
+      if (difference <= 0) {
+        // If the countdown is over, redirect to the birthday page
+        window.location.href = 'birthday.html';  // This is where the birthday page is located
+      } else {
+        // Calculate days, hours, minutes, and seconds
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        // Display the countdown
+        document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+    }
+
+    // Update countdown every second
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
